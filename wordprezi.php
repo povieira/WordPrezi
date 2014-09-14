@@ -3,7 +3,7 @@
  * Plugin Name: WordPrezi
  * Plugin URI: http://wordprezi.appspot.com/plugin
  * Description: Easy way to embed Prezi presentations in Wordpress blogposts
- * Version: 0.2
+ * Version: 0.5
  * Author: Pablo O Vieira
  * Author URI: http://povieira.com
  * License: GPLv3
@@ -12,7 +12,7 @@
 /*  Copyright 2013  Pablo O Vieira (povieira)  (email : wordprezi@povieira.com)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 2, as
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -35,7 +35,8 @@ function validate_params( $atts ) {
 		'url' => null,
 		'width' => 500,
 		'height' => 400,
-		'zoom_freely' => 'N'
+		'zoom_freely' => 'N',
+		'use_html5' => 'N'
 	), $atts ) );
 
 	$err_msg = '';
@@ -51,7 +52,7 @@ function validate_params( $atts ) {
 	}
 
 	if ( $err_msg ) {
-		return "<em><strong>[WordPrezi plugin error:</strong><br>" . PHP_EOL . 
+		return "<em><strong>[WordPrezi plugin error:</strong><br>" . PHP_EOL .
 			$err_msg . "<strong>]</strong></em>";
 	} else {
 		return null;
@@ -59,7 +60,7 @@ function validate_params( $atts ) {
 }
 
 function wordprezi_shortcode( $atts ) {
-	
+
 	$params_errors = validate_params( $atts );
 
 	if ( $params_errors ) {
@@ -70,20 +71,25 @@ function wordprezi_shortcode( $atts ) {
 		'url' => null,
 		'width' => 550,
 		'height' => 400,
-		'zoom_freely' => 'N'
+		'zoom_freely' => 'N',
+		'use_html5' => 'N'
 	), $atts ) );
 
 	preg_match( URL_PATTERN, $url, $output_array );
-	
+
 	$id = $output_array[1];
 	$lock_to_path = ( strtoupper( $zoom_freely ) === 'Y'? 0: 1 );
-	
-     
+	$html5 = ( strtoupper( $use_html5 ) === 'Y'? 1: 0 );
+
+
 	return "<!-- begin WordPrezi -->" . PHP_EOL .
 		"<iframe src='http://prezi.com/embed/{$id}/?bgcolor=ffffff&amp;" .
 		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
-		"&amp;features=undefined&amp;disabled_features=undefined' " .
-		"width='{$width}' height='{$height}' frameBorder='0'></iframe>" . PHP_EOL .
+		"&amp;features=undefined&amp;disabled_features=undefined" .
+		"&amp;html5={$html5}' " .
+		"width='{$width}' height='{$height}' frameBorder='0'" .
+		"webkitAllowFullScreen mozAllowFullscreen allowfullscreen>" .
+		"</iframe>" . PHP_EOL .
 		"<!-- end WordPrezi -->" . PHP_EOL;
 }
 
