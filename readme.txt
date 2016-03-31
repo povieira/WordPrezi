@@ -3,8 +3,8 @@ Contributors: povieira
 Donate link: http://wordprezi.appspot.com/plugin
 Tags: prezi, embed, wordpress, wordprezi
 Requires at least: 3.0.1
-Tested up to: 4.4
-Stable tag: 0.6
+Tested up to: 4.5
+Stable tag: 0.6.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -48,6 +48,9 @@ YES! This is the alternative option for self-hosted Wordpress blog users.
 Hard to tell, but I really hope so. It would be great if Wordpress.com team could do that.
 
 == Changelog ==
+
+= 0.6.1 - 2015-04-21 =
+* Tested with WP 4.5
 
 = 0.6 - 2015-04-21 =
 * Tested with WP 4.2
