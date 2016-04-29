@@ -1,6 +1,13 @@
+![alt text align:center](http://wordprezi.appspot.com/assets/img/logo64x64.png "WordPrezi")
+
 # WordPrezi
 
-[WordPrezi](http://wordprezi.appspot.com/plugin)   is a plugin to embed Prezi presentations into Wordpress blogposts.
+[![Last Version](https://img.shields.io/wordpress/plugin/v/wordprezi.svg?style=flat-square)](https://wordpress.org/plugins/wordprezi/)
+[![Rates](https://img.shields.io/wordpress/plugin/r/wordprezi.svg?style=flat-square)](https://wordpress.org/support/view/plugin-reviews/wordprezi/)
+[![Downloads](https://img.shields.io/wordpress/plugin/dt/wordprezi.svg?style=flat-square)](https://wordpress.org/plugins/wordprezi/stats/)
+[![License](https://img.shields.io/badge/license-GPLv3-red.svg?style=flat-square)](license.txt)
+
+[WordPrezi](http://wordprezi.appspot.com/plugin) is a plugin to embed Prezi presentations into Wordpress blogposts.
 
 Licensed under [GPLv3](https://www.gnu.org/licenses/gpl.html)
 
