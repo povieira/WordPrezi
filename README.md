@@ -66,6 +66,9 @@ Example:
 
 ## Changelog
 
+### 0.6.3 - 2014-09-11
+* Tested with WP 4.7
+
 ### 0.5 - 2014-09-11
 * Tested with WP 4.0
 * Prezi HTML5 comptibility
