@@ -66,6 +66,9 @@ Example:
 
 ## Changelog
 
+### 0.6.4 - 2017-06-01
+* Tested with WP 4.8
+
 ### 0.6.3 - 2014-09-11
 * Tested with WP 4.7
 
