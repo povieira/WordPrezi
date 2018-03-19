@@ -3,9 +3,9 @@
  * Plugin Name: WordPrezi
  * Plugin URI: http://wordprezi.appspot.com/plugin
  * Description: Easy way to embed Prezi presentations in Wordpress blogposts
- * Version: 0.6.1
- * Author: Pablo O Vieira
- * Author URI: http://povieira.com
+ * Version: 0.7
+ * Author: Pablo Vieira
+ * Author URI: http://pv8.io
  * License: GPLv3
  */
 
@@ -27,7 +27,7 @@
 
 //define('WP_DEBUG', true);
 
-define( 'URL_PATTERN', "/.*prezi\.com\/(.+?)\/.*/" );
+define( 'URL_PATTERN', "/^(https?):\/\/.*prezi\.com\/(.+)/" );
 
 function validate_params( $atts ) {
 
@@ -75,15 +75,28 @@ function wordprezi_shortcode( $atts ) {
 		'use_html5' => 'N'
 	), $atts ) );
 
-	preg_match( URL_PATTERN, $url, $output_array );
+	preg_match( URL_PATTERN, $url, $url_parts );
 
-	$id = $output_array[1];
+	$path_parts = explode('/', rtrim($url_parts[2], '/'));
+	
 	$lock_to_path = ( strtoupper( $zoom_freely ) === 'Y'? 0: 1 );
 	$html5 = ( strtoupper( $use_html5 ) === 'Y'? 1: 0 );
 
-
-	return "<!-- begin WordPrezi -->" . PHP_EOL .
-		"<iframe src='http://prezi.com/embed/{$id}/?bgcolor=ffffff&amp;" .
+	if (count($path_parts) > 1 && $path_parts[0] == 'p') {
+		$prezi_id = $path_parts[1];
+		return "<!-- begin WordPrezi (Prezi Next)-->" . PHP_EOL .
+		"<iframe src='http://prezi.com/p/{$prezi_id}/embed?bgcolor=ffffff&amp;" .
+		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
+		"&amp;features=undefined&amp;disabled_features=undefined" .
+		"&amp;html5={$html5}' " .
+		"width='{$width}' height='{$height}' frameBorder='0'" .
+		"webkitAllowFullScreen='1' mozAllowFullscreen='1' allowfullscreen='1'>" .
+		"</iframe>" . PHP_EOL .
+		"<!-- end WordPrezi -->" . PHP_EOL;
+	} else {
+		$prezi_id = $path_parts[0];
+		return "<!-- begin WordPrezi (Prezi Classic) -->" . PHP_EOL .
+		"<iframe src='http://prezi.com/embed/{$prezi_id}/?bgcolor=ffffff&amp;" .
 		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
 		"&amp;features=undefined&amp;disabled_features=undefined" .
 		"&amp;html5={$html5}' " .
@@ -91,6 +104,7 @@ function wordprezi_shortcode( $atts ) {
 		"webkitAllowFullScreen mozAllowFullscreen allowfullscreen>" .
 		"</iframe>" . PHP_EOL .
 		"<!-- end WordPrezi -->" . PHP_EOL;
+	}
 }
 
 add_shortcode( 'prezi', 'wordprezi_shortcode' );
