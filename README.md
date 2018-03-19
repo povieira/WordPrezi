@@ -66,6 +66,10 @@ Example:
 
 ## Changelog
 
+### 0.7 - 2018-03-19
+* Added support [Prezi Next](https://blog.prezi.com/prezi-next/)
+* Tested with WP up to 4.9.4
+
 ### 0.6.4 - 2017-06-01
 * Tested with WP 4.8
 
