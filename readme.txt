@@ -1,10 +1,10 @@
 === WordPrezi ===
-Contributors: povieira
+Contributors: wordprezi, povieira
 Donate link: http://wordprezi.appspot.com/plugin
 Tags: prezi, embed, wordpress, wordprezi
 Requires at least: 3.0.1
-Tested up to: 4.9.4
-Stable tag: 0.7
+Tested up to: 5.5.1
+Stable tag: 0.8
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -30,12 +30,6 @@ For more information, check out [WordPrezi plugin website](http://wordprezi.apps
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Done!
 
-= From WordPress.org =
-
-1. Download *WordPrezi plugin*
-1. Upload `wordprezi` directory to the `/wp-content/plugins/` directory via stp, sftp, ftp, etc...
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Done!
 
 == Frequently Asked Questions ==
 
@@ -48,6 +42,10 @@ YES! This is the alternative option for self-hosted Wordpress blog users.
 Hard to tell, but I really hope so. It would be great if Wordpress.com team could do that.
 
 == Changelog ==
+
+= 0.8 - 2020-10-28 =
+* Added support for New Prezi
+* Tested with WP up to 5.5.1
 
 = 0.7 - 2018-03-19 =
 * Added support [Prezi Next](https://blog.prezi.com/prezi-next/)
