@@ -3,7 +3,7 @@
  * Plugin Name: WordPrezi
  * Plugin URI: http://wordprezi.appspot.com/plugin
  * Description: Easy way to embed Prezi presentations in Wordpress blogposts
- * Version: 0.7
+ * Version: 0.8.1
  * Author: Pablo
  * Author URI: http://pv8.io
  * License: GPLv3
@@ -85,7 +85,7 @@ function wordprezi_shortcode( $atts ) {
 	if (count($path_parts) > 1 && $path_parts[0] == 'p') {
 		$prezi_id = $path_parts[1];
 		return "<!-- begin WordPrezi (Prezi Next)-->" . PHP_EOL .
-		"<iframe src='http://prezi.com/p/{$prezi_id}/embed?bgcolor=ffffff&amp;" .
+		"<iframe src='https://prezi.com/p/{$prezi_id}/embed?bgcolor=ffffff&amp;" .
 		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
 		"&amp;features=undefined&amp;disabled_features=undefined" .
 		"&amp;html5={$html5}' " .
@@ -96,7 +96,7 @@ function wordprezi_shortcode( $atts ) {
 	} elseif (count($path_parts) > 1 && $path_parts[0] == 'view') {
 		$prezi_id = $path_parts[1];
 		return "<!-- begin WordPrezi -->" . PHP_EOL .
-		"<iframe src='http://prezi.com/view/{$prezi_id}/embed" .
+		"<iframe src='https://prezi.com/view/{$prezi_id}/embed" .
 		"width='{$width}' height='{$height}' " .
 		"webkitallowfullscreen='1' mozallowfullscreen='1' allowfullscreen='1'>" .
 		"</iframe>" . PHP_EOL .
@@ -104,7 +104,7 @@ function wordprezi_shortcode( $atts ) {
 	} else {
 		$prezi_id = $path_parts[0];
 		return "<!-- begin WordPrezi (Prezi Classic) -->" . PHP_EOL .
-		"<iframe src='http://prezi.com/embed/{$prezi_id}/?bgcolor=ffffff&amp;" .
+		"<iframe src='https://prezi.com/embed/{$prezi_id}/?bgcolor=ffffff&amp;" .
 		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
 		"&amp;features=undefined&amp;disabled_features=undefined" .
 		"&amp;html5={$html5}' " .
