@@ -66,6 +66,14 @@ Example:
 
 ## Changelog
 
+### 0.8.3 - 2023-03-10
+* Tested with WP up to 6.1.1
+
+### 0.8.1 - 2020-10-28
+* Hotfix: HTTPS support
+* Added support for New Prezi
+* Tested with WP up to 5.5.1
+
 ### 0.7 - 2018-03-19
 * Added support [Prezi Next](https://blog.prezi.com/prezi-next/)
 * Tested with WP up to 4.9.4

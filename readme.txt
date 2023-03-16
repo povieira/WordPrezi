@@ -3,8 +3,8 @@ Contributors: wordprezi, povieira
 Donate link: http://wordprezi.appspot.com/plugin
 Tags: prezi, embed, wordpress, wordprezi
 Requires at least: 3.0.1
-Tested up to: 5.5.1
-Stable tag: 0.8.1
+Tested up to: 6.1.1
+Stable tag: 0.8.3
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -43,10 +43,11 @@ Hard to tell, but I really hope so. It would be great if Wordpress.com team coul
 
 == Changelog ==
 
+= 0.8.3 - 2023-03-10 =
+* Tested with WP up to 6.1.1
+
 = 0.8.1 - 2020-10-28 =
 * Hotfix: HTTPS support
-
-= 0.8 - 2020-10-28 =
 * Added support for New Prezi
 * Tested with WP up to 5.5.1
 
