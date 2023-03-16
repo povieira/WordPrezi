@@ -70,49 +70,27 @@ function wordprezi_shortcode( $atts ) {
 	extract( shortcode_atts( array(
 		'url' => null,
 		'width' => 550,
-		'height' => 400,
-		'zoom_freely' => 'N',
-		'use_html5' => 'N'
+		'height' => 400
 	), $atts ) );
 
 	preg_match( URL_PATTERN, $url, $url_parts );
 
 	$path_parts = explode('/', rtrim($url_parts[2], '/'));
-	
-	$lock_to_path = ( strtoupper( $zoom_freely ) === 'Y'? 0: 1 );
-	$html5 = ( strtoupper( $use_html5 ) === 'Y'? 1: 0 );
 
-	if (count($path_parts) > 1 && $path_parts[0] == 'p') {
-		$prezi_id = $path_parts[1];
-		return "<!-- begin WordPrezi (Prezi Next)-->" . PHP_EOL .
-		"<iframe src='https://prezi.com/p/{$prezi_id}/embed?bgcolor=ffffff&amp;" .
-		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
-		"&amp;features=undefined&amp;disabled_features=undefined" .
-		"&amp;html5={$html5}' " .
-		"width='{$width}' height='{$height}' frameBorder='0'" .
-		"webkitAllowFullScreen='1' mozAllowFullscreen='1' allowfullscreen='1'>" .
-		"</iframe>" . PHP_EOL .
-		"<!-- end WordPrezi -->" . PHP_EOL;
-	} elseif (count($path_parts) > 1 && $path_parts[0] == 'view') {
-		$prezi_id = $path_parts[1];
-		return "<!-- begin WordPrezi -->" . PHP_EOL .
-		"<iframe src='https://prezi.com/view/{$prezi_id}/embed'" .
-		"width='{$width}' height='{$height}' " .
-		"webkitallowfullscreen='1' mozallowfullscreen='1' allowfullscreen='1'>" .
-		"</iframe>" . PHP_EOL .
-		"<!-- end WordPrezi -->" . PHP_EOL;
+	if (count($path_parts) > 1 && $path_parts[0] == 'p' && $path_parts[1] == 'embed') {
+		$prezi_id = preg_replace('/[^A-Za-z0-9\-]/', '', $path_parts[2]);
+	} elseif (count($path_parts) > 1 && ($path_parts[0] == 'view' || $path_parts[0] == 'p')) {
+		$prezi_id = preg_replace('/[^A-Za-z0-9\-]/', '', $path_parts[1]);
 	} else {
-		$prezi_id = $path_parts[0];
-		return "<!-- begin WordPrezi (Prezi Classic) -->" . PHP_EOL .
-		"<iframe src='https://prezi.com/embed/{$prezi_id}/?bgcolor=ffffff&amp;" .
-		"lock_to_path={$lock_to_path}&amp;autoplay=no&amp;autohide_ctrls=0" .
-		"&amp;features=undefined&amp;disabled_features=undefined" .
-		"&amp;html5={$html5}' " .
-		"width='{$width}' height='{$height}' frameBorder='0'" .
-		"webkitAllowFullScreen mozAllowFullscreen allowfullscreen>" .
-		"</iframe>" . PHP_EOL .
-		"<!-- end WordPrezi -->" . PHP_EOL;
+		$prezi_id = preg_replace('/[^A-Za-z0-9\-]/', '', $path_parts[0]);
 	}
+	return "<!-- begin WordPrezi -->" . PHP_EOL .
+		"<iframe src='https://prezi.com/p/embed/{$prezi_id}/' id='iframe_container' " .
+		"frameborder='0' webkitallowfullscreen='' mozallowfullscreen='' " .
+		"allowfullscreen='' allow='autoplay; fullscreen' " .
+		"height='{$height}' width='{$height}'></iframe>" . PHP_EOL .
+		"<!-- end WordPrezi -->" . PHP_EOL;
+
 }
 
 add_shortcode( 'prezi', 'wordprezi_shortcode' );
