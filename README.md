@@ -48,7 +48,6 @@ To embed your prezis into your blogposts, add the following shortcode into your 
 
 It is also possible to specify this options:
 * *width and height*: dimensions of the embed prezi in pixels. Default dimensions: width=550 and height=400
-* *zoom_freely*: `Y` if you want to **let users to pan and zoom freely** or `N` if you want to **constrain to simple back and forward steps**. `N` is default.
 
 Example:
 
@@ -65,6 +64,10 @@ Example:
 **A**: Hard to tell, but I really hope so. It would be great if Wordpress.com team could do that.
 
 ## Changelog
+
+### 0.9 - 2023-03-16
+* Security update: fix vulnerability issue where contributors could perfofm Stored Corss-Site Scripting attacks
+* Drop support for the `zoom_freely` option
 
 ### 0.8.3 - 2023-03-10
 * Tested with WP up to 6.1.1

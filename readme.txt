@@ -4,7 +4,7 @@ Donate link: http://wordprezi.appspot.com/plugin
 Tags: prezi, embed, wordpress, wordprezi
 Requires at least: 3.0.1
 Tested up to: 6.1.1
-Stable tag: 0.8.3
+Stable tag: 0.9
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -42,6 +42,10 @@ YES! This is the alternative option for self-hosted Wordpress blog users.
 Hard to tell, but I really hope so. It would be great if Wordpress.com team could do that.
 
 == Changelog ==
+
+= 0.9 - 2023-03-16 =
+* Security update: fix vulnerability issue where contributors could perfofm Stored Corss-Site Scripting attacks
+* Drop support for the *zoom_freely* option
 
 = 0.8.3 - 2023-03-10 =
 * Tested with WP up to 6.1.1
@@ -81,10 +85,9 @@ To embed your prezis into your blogposts, add the following shortcode into your 
 
 It is also possible to specify this options:
 * *width and height*: dimensions of the embed prezi in pixels. Default dimensions: width=550 and height=400
-* *zoom_freely*: `Y` if you want to **let users to pan and zoom freely** or `N` if you want to **constrain to simple back and forward steps**. `N` is default.
 
 Example:
 
 `
-[prezi url="http://prezi.com/ebosu8kq6vjn/embed-prezi-into-wordpress/" width="600" height="430" zoom_freely="N"]
+[prezi url="http://prezi.com/ebosu8kq6vjn/embed-prezi-into-wordpress/" width="600" height="430"]
 `
